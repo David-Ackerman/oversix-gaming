@@ -1,0 +1,184 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gaming-purple: #8b5cf6;
+  --color-gaming-blue: #3b82f6;
+  --color-gaming-cyan: #0ea5e9;
+  --color-gaming-pink: #ec4899;
+  --color-gaming-orange: #f97316;
+  --color-gaming-green: #10b981;
+  --color-background: #08080a;
+  --color-foreground: #f9f9f9;
+
+  --color-card: #08080a;
+  --color-card-foreground: #f9f9f9;
+
+  --color-popover: #08080a;
+  --color-popover-foreground: #f9f9f9;
+
+  --color-primary: #7b39ed;
+  --color-primary-foreground: #f7f9fb;
+
+  --color-secondary: #1e293b;
+  --color-secondary-foreground: #f7f9fb;
+
+  --color-muted: #1e293b;
+  --color-muted-foreground: #94a3b7;
+
+  --color-accent: #1e293b;
+  --color-accent-foreground: #f7f9fb;
+
+  --color-destructive: #7f1d1d;
+  --color-destructive-foreground: #f7f9fb;
+
+  --color-sidebar-background: #09090b;
+  --color-sidebar-foreground: #f9f9f9;
+
+  --color-sidebar-primary: #7b39ed;
+  --color-sidebar-primary-foreground: #f7f9fb;
+
+  --color-sidebar-accent: #1e293b;
+  --color-sidebar-accent-foreground: #f7f9fb;
+
+  --color-sidebar-border: #2b2b30;
+  --color-sidebar-ring: #43434a;
+
+  --radius: 0.5rem;
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-pulse-glow: pulse-glow 2s ease-in-out infinite;
+  --animate-fade-in: fade-in 0.5s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      filter: drop-shadow(0 0 2px rgba(139, 92, 246, 0.5));
+    }
+    50% {
+      filter: drop-shadow(0 0 4px rgba(139, 92, 246, 0.8));
+    }
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* @layer utilities {
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-float {
+    animation: float 5s ease-in-out infinite;
+  }
+
+  @keyframes pixel-animation {
+    0% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.5;
+    }
+  }
+
+  .animate-pixel {
+    animation: pixel-animation 2s ease-in-out infinite;
+  }
+} */
+
+@layer components {
+  .gaming-card {
+    @apply relative overflow-hidden rounded-lg bg-gradient-to-b from-secondary/80 to-card border border-secondary/80 hover:border-gaming-purple/50 transition-all duration-300 hover:shadow-[0_0_15px_rgba(139,92,246,0.3)];
+  }
+
+  .gaming-button {
+    @apply px-6 py-2 rounded-md bg-gaming-purple text-white font-bold transition-all hover:bg-gaming-purple/90 hover:shadow-[0_0_15px_rgba(139,92,246,0.5)] uppercase tracking-wider relative overflow-hidden;
+  }
+
+  .gaming-badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors;
+  }
+
+  .category-chip {
+    @apply inline-flex items-center rounded-md px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* New gaming-specific styles */
+  .pixel-corners {
+    @apply relative;
+    clip-path: polygon(
+      0 10px,
+      10px 0,
+      calc(100% - 10px) 0,
+      100% 10px,
+      100% calc(100% - 10px),
+      calc(100% - 10px) 100%,
+      10px 100%,
+      0 calc(100% - 10px)
+    );
+  }
+
+  .neon-text {
+    @apply text-gaming-purple;
+    text-shadow:
+      0 0 5px rgba(139, 92, 246, 0.7),
+      0 0 10px rgba(139, 92, 246, 0.5);
+  }
+
+  .bg-size-200 {
+    background-size: 200% 100%;
+    background-position: 0% 0%;
+  }
+
+  .bg-pos-100 {
+    background-position: 100% 0%;
+  }
+}
