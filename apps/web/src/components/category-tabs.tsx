@@ -15,12 +15,11 @@ type CategoryTabsProps = {
   onSelectCategory: (categoryId: string) => void;
 };
 
-export function CategoryTabs({ onSelectCategory }: CategoryTabsProps) {
+export function CategoryTabs() {
   const [activeCategory, setActiveCategory] = useState("all");
 
   const handleCategoryClick = (categoryId: string) => {
     setActiveCategory(categoryId);
-    onSelectCategory(categoryId);
   };
 
   return (

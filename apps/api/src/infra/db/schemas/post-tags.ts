@@ -1,9 +1,11 @@
-import { pgTable, serial, text, integer } from "drizzle-orm/pg-core";
-
+import { pgTable, text } from "drizzle-orm/pg-core";
+import { uuidv7 } from 'uuidv7';
 import { posts } from "./posts";
 
 export const postTags = pgTable("post_tags", {
-  id: serial("id").primaryKey(),
-  postId: integer("post_id").references(() => posts.id).notNull(),
+  id: text('id')
+      .primaryKey()
+      .$defaultFn(() => uuidv7()),
+  postId: text("post_id").references(() => posts.id).notNull(),
   tag: text("tag").notNull(),
 });

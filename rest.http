@@ -1,0 +1,14 @@
+POST http://localhost:3333/api/auth/oauth-login
+Content-Type: application/json
+
+{
+  "name": "Test User",
+  "email": "test.user@example.com",
+  "avatarUrl": "https://example.com/avatar.jpg",
+  "provider": "google",
+  "providerId": "test-google-id-123"
+}
+
+###
+
+GET http://localhost:3333/

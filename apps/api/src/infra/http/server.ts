@@ -8,6 +8,7 @@ import {
 } from 'fastify-type-provider-zod'
 import { transformSwaggerSchema } from "./transform-swagger-schema";
 import fastifySwaggerUi from "@fastify/swagger-ui";
+import { authRoute } from "./routes/auth-route";
 
 const server = Fastify();
 
@@ -16,6 +17,8 @@ server.setSerializerCompiler(serializerCompiler)
 
 
 server.setErrorHandler((error, request, reply) => {
+  console.error(error)
+  
   if (hasZodFastifySchemaValidationErrors(error)) {
     return reply.status(400).send({
       message: 'Validation error',
@@ -23,7 +26,6 @@ server.setErrorHandler((error, request, reply) => {
     })
   }
 
-  console.error(error)
 
   return reply.status(500).send({
     message: 'Internal server error.',
@@ -45,6 +47,8 @@ server.register(fastifySwagger, {
 server.register(fastifySwaggerUi, {
   routePrefix: '/docs',
 })
+
+server.register(authRoute);
 
 server.get("/", async () => ({ hello: "world" }));
 

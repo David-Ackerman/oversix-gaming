@@ -67,15 +67,16 @@ export function Navbar() {
                 <User className="h-5 w-5 text-gaming-purple" />
               </Button>
             ) : (
-              <Button
-                variant="outline"
-                size="sm"
-                className="hidden md:flex border-gaming-purple text-gaming-purple hover:bg-gaming-purple/10"
-                onClick={toggleLogin}
-              >
-                <LogIn className="mr-2 h-4 w-4" />
-                Login
-              </Button>
+              <Link href="/login">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="hidden md:flex border-gaming-purple text-gaming-purple hover:bg-gaming-purple/10"
+                >
+                  <LogIn className="mr-2 h-4 w-4" />
+                  Login
+                </Button>
+              </Link>
             )}
 
             {/* Mobile menu button */}
