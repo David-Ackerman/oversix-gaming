@@ -1,4 +1,11 @@
 services:
+  mongodb:
+      image: mongo:6
+      container_name: blog-mongodb
+      ports:
+        - "27017:27017"
+      volumes:
+        - mongo-data:/data/db
   pg:
     image: bitnami/postgresql:latest
     ports:
@@ -9,3 +16,6 @@ services:
       - POSTGRES_DB=oversix-gaming
     volumes:
       - './docker:/docker-entrypoint-initdb.d'
+
+volumes:
+  mongo-data:
