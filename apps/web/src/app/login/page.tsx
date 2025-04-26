@@ -1,8 +1,5 @@
-import React from "react";
+"use client";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   Card,
   CardContent,
@@ -11,7 +8,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Gamepad2, ArrowLeft, Facebook, Apple } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Apple, ArrowLeft, Facebook, Gamepad2 } from "lucide-react";
+import { signIn } from "next-auth/react";
+import React from "react";
 
 import Link from "next/link";
 
@@ -19,9 +21,9 @@ export default function Login() {
   return (
     <div className="min-h-screen flex flex-col bg-background relative overflow-hidden">
       {/* Background decorative elements */}
-      <div className="absolute -top-40 -right-40 w-80 h-80 bg-gaming-purple/5 rounded-full blur-3xl"></div>
-      <div className="absolute top-1/3 -left-40 w-80 h-80 bg-gaming-blue/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 right-20 w-60 h-60 bg-gaming-cyan/5 rounded-full blur-3xl"></div>
+      <div className="absolute -top-40 -right-40 w-80 h-80 bg-gaming-purple/5 rounded-full blur-3xl" />
+      <div className="absolute top-1/3 -left-40 w-80 h-80 bg-gaming-blue/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-20 w-60 h-60 bg-gaming-cyan/5 rounded-full blur-3xl" />
 
       {/* Header with back button */}
       <div className="container mx-auto px-4 py-6">
@@ -101,7 +103,7 @@ export default function Login() {
             {/* Social login section */}
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <span className="w-full border-t border-gaming-purple/20"></span>
+                <span className="w-full border-t border-gaming-purple/20" />
               </div>
               <div className="relative flex justify-center text-xs">
                 <span className="bg-card px-2 text-muted-foreground">
@@ -120,6 +122,7 @@ export default function Login() {
               <Button
                 variant="outline"
                 className="border-slate-300/50 hover:bg-slate-300/10 hover:border-slate-300"
+                onClick={() => signIn("google")}
               >
                 {/* <FcGoogle className="h-5 w-5" /> */}
                 google
